@@ -44,6 +44,7 @@ class MigrateCommand extends Command
         } else {
             $this->warn('No migrations found! Consider publish them first: <fg=green>php artisan rinvex:publish:addresses</>');
         }
+        
 
         $this->line('');
     }
