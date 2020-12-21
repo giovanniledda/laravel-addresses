@@ -8,66 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Rinvex\Addresses\Events\AddressSaved;
 use Jackpopp\GeoDistance\GeoDistanceTrait;
-use Rinvex\Support\Traits\ValidatingTrait;
 use Rinvex\Addresses\Events\AddressDeleted;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-/**
- * Rinvex\Addresses\Models\Address.
- *
- * @property int                                                $id
- * @property int                                                $addressable_id
- * @property string                                             $addressable_type
- * @property string                                             $label
- * @property string                                             $given_name
- * @property string                                             $family_name
- * @property string                                             $full_name
- * @property string                                             $organization
- * @property string                                             $country_code
- * @property string                                             $street
- * @property string                                             $state
- * @property string                                             $city
- * @property string                                             $postal_code
- * @property float                                              $latitude
- * @property float                                              $longitude
- * @property bool                                               $is_primary
- * @property bool                                               $is_billing
- * @property bool                                               $is_shipping
- * @property \Carbon\Carbon|null                                $created_at
- * @property \Carbon\Carbon|null                                $updated_at
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $addressable
- *
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address inCountry($countryCode)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address inLanguage($languageCode)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address isBilling()
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address isPrimary()
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address isShipping()
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address outside($distance, $measurement = null, $latitude = null, $longitude = null)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereAddressableId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereAddressableType($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereCity($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereCountryCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereFamilyName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereGivenName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereIsBilling($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereIsPrimary($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereIsShipping($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereLabel($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereLatitude($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereLongitude($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereOrganization($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address wherePostalCode($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereState($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereStreet($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Rinvex\Addresses\Models\Address within($distance, $measurement = null, $latitude = null, $longitude = null)
- * @mixin \Eloquent
- */
 class Address extends Model
 {
-    use ValidatingTrait;
     use GeoDistanceTrait;
 
     /**
