@@ -73,10 +73,10 @@ class Address extends Model
      *
      * @var array
      */
-    protected $dispatchesEvents = [
-        'saved' => AddressSaved::class,
-        'deleted' => AddressDeleted::class,
-    ];
+//    protected $dispatchesEvents = [
+//        'saved' => AddressSaved::class,
+//        'deleted' => AddressDeleted::class,
+//    ];
 
     /**
      * The default rules that the model will validate against.
